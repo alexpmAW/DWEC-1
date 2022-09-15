@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+    function showValueCheckIsPrime(){
+        const value  = parseFloat(document.getElementById("myInput").value);
+        let isPrimo=true;
+        for(let i = 2, s = Math.sqrt(value); i <= s; i++)
+        {
+            if(value % i === 0) 
+            {
+                isPrimo= false; 
+                break;
+            }    
+        }
+
+        alert("El número "+ value + " " + (isPrimo ? "es Primo" : "no es Primo"));
+    }
+
+    function onlyNumber(event){
+        if (isNaN(parseFloat(event.key)))
+        {
+            return false;
+        }
+        return true;
+    }
+</script>
+</head>
+<body>
+    <input type="text" onkeydown="return onlyNumber(event)" placeholder="Escribe algo..." id="myInput">
+    <button type="button"   onclick="showValueCheckIsPrime()">Muestra el valor</button>
+</body>
+</html>
