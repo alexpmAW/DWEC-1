@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <div id="cifradoContainer" class="cDifradoContainer">
+            <div id="introducirNumCesar" class="cIntroducirNumCesar">
+                <label for="numeroCesar">Escriba el número de desplazamiento</label>
+                <input type="number" id="numeroCesar" onkeydown="return onlyNumber(event)" name="numeroCesar" min="0">
+            </div>
+            <div id="textAreas" class="cTextAreas">
+                <textarea id="textAreaCifrar" name="textAreaCifrar">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+                </textarea>
+                <textarea id="textAreaCifrado" disabled name="textAreaCifrado"> </textarea>
+            </div>
+            <div id="butonCifrar" class="cButonCifrar">
+                <input type="button" id="cifrar" value="Cifrar" onclick="cifrar()">
+            </div>
+        </div>
+        <div id="descifradoContainer" class="cDescifradoContainer">
+            <textarea id="textAreaDescifrado" disabled name="textAreaDescifrado">
+
+            </textarea>
+        </div>
+
+
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

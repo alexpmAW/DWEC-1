@@ -1,0 +1,32 @@
+.cButonCifrar {
+  padding: 1em;
+  text-align: center;
+}
+
+.cTextAreas {
+  padding: 1em;
+}
+
+.cIntroducirNumCesar {
+  padding: 1em;
+
+}
+
+textarea {
+  height: 8em;
+  width: 20em;
+}
+
+#cifrar {
+  background: #ccc;
+  border: #000 1px solid;
+  padding: 1em;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.cDifradoContainer,
+.cDescifradoContainer {
+  border: #000 1px solid;
+}
