@@ -12,12 +12,22 @@
 
 }
 
-textarea {
-  height: 8em;
-  width: 20em;
+.descifradoContainer {
+  text-align: center;
+  padding: 1em;
 }
 
-#cifrar {
+textarea {
+  height: 10em;
+  width: 40em;
+  vertical-align: top;
+}
+
+#textAreaCifrar {
+  text-align: left;
+}
+
+.button {
   background: #ccc;
   border: #000 1px solid;
   padding: 1em;

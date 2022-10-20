@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ES">
 
 <head>
     <meta charset="utf-8">
     <script src="scripts/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <title> Ejercicio ciframos</title>
 </head>
 
 <body>
@@ -14,21 +15,29 @@
         <div id="cifradoContainer" class="cDifradoContainer">
             <div id="introducirNumCesar" class="cIntroducirNumCesar">
                 <label for="numeroCesar">Escriba el número de desplazamiento</label>
-                <input type="number" id="numeroCesar" onkeydown="return onlyNumber(event)" name="numeroCesar" min="0">
+                <input type="number" id="numeroCesar" onkeydown="return onlyNumber(event)" name="numeroCesar" value="1"
+                    min="0">
             </div>
-            <div id="textAreas" class="cTextAreas">
-                <textarea id="textAreaCifrar" name="textAreaCifrar">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+            <div id="textAreasCifrado" class="cTextAreas">
+                <label for="textAreaCifrar">Texto por cifrar</label>
+                <textarea id="textAreaCifrar" name="textAreaCifrar">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.                    
                 </textarea>
+                <label for="textAreaCifrado">Resultado texto cifrado</label>
                 <textarea id="textAreaCifrado" disabled name="textAreaCifrado"> </textarea>
             </div>
             <div id="butonCifrar" class="cButonCifrar">
-                <input type="button" id="cifrar" value="Cifrar" onclick="cifrar()">
+                <input type="button" id="cifrar" class="button" value="Cifrar" onclick="cifrar()">
             </div>
         </div>
         <div id="descifradoContainer" class="cDescifradoContainer">
-            <textarea id="textAreaDescifrado" disabled name="textAreaDescifrado">
-
-            </textarea>
+            <div id="textAreasDescifrado" class="cTextAreas">
+                <label for="textAreaCifrado">Resultado texto descifrado</label>
+                <textarea id="textAreaDescifrado" disabled name="textAreaDescifrado">
+                </textarea>
+            </div>
+            <div id="butonDescifrar" class="cButonCifrar">
+                <input type="button" id="descifrar" class="button" value="Descifrar" onclick="descifrar()">
+            </div>
         </div>
 
 
