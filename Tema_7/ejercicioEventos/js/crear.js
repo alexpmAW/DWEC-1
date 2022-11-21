@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function saveData() {
-
+  let message = "";
   const nombre = document.getElementById('iNombre').value;
+  message += checkIfElementValueIsEmpty(nombre, 'nombre');
   const apellido = document.getElementById('iApellido').value;
   const nacimiento = document.getElementById('iNacimiento').value;
   const genero = document.querySelector('input[name="genero"]:checked').checked;
@@ -29,4 +30,9 @@ function saveData() {
 
   })
   localStorage.setItem(JSON.stringify(arrayData))
+}
+
+function checkIfElementValueIsEmpty(element, nombreElemento) {
+  if (element === null || element.value === null || element.value === undefined)
+    return `The element ${nombreElemento} has no value! \n`;
 }
