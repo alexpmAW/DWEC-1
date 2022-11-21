@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ES">
+
+<head>
+    <meta charset="utf-8">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title> Ejercicio vehicles</title>
+</head>
+
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+
+        <form autocomplete="on">
+            <fieldset>
+                <legend>Datos personales:</legend>
+                <label for="iNombre">Nombre</label>
+                <input type="text" id="iNombre" name="iNombre" autocomplete="given-name">
+
+                <label for="iApellido">Apellido</label>
+                <input type="text" id="iApellido" name="iApellido" autocomplete="family-name">
+
+                <label for="iNacimiento">Fecha Nacimiento</label>
+                <input type="date" id="iNacimiento" name="iNacimiento" autocomplete="bday">
+                <div class="inRow">
+                    <input type="radio" id="H" name="genero" value="H" checked>
+                    <label for="H">Hombre</label>
+
+                    <input type="radio" id="M" name="genero" value="M">
+                    <label for="M">Mujer</label>
+
+                    <input type="radio" id="O" name="genero" value="O">
+                    <label for="O">Otro</label>
+                </div>
+
+            </fieldset>
+            <fieldset>
+                <legend>Información privada:</legend>
+                <label for="iBan">Iban</label>
+                <div class="inRow">
+                    <input type="text" id="ccc1" placeholder="0000" maxlength="4" size="4" minlength="4">
+                    <input type="text" id="ccc2" placeholder="0000" maxlength="4" size="4" minlength="4">
+                    <input type="text" id="ccc3" placeholder="00" maxlength="2" size="2" minlength="2">
+                    <input type="text" id="ccc4" placeholder="0000000000" maxlength="10" size="10" minlength="10">
+                </div>
+                <label for="iPass">Password</label>
+                <input type="Password" id="iPass" name="iPass">
+                <div class="submit">
+                    <input type="submit" value="Registrar" onclick="saveData()">
+                </div>
+
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

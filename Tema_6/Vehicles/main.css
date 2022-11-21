@@ -4,32 +4,7 @@
   box-sizing: border-box;
 }
 
-.firstRow {
+fieldset {
   display: flex;
-  flex-direction: row;
-  align-self: flex-end;
-  justify-content: flex-start;
-  width: 100%;
-  margin: 1em;
-  gap: 0.5em;
-}
-
-.lastRow {
-  display: flex;
-  flex-direction: row;
-  align-self: flex-end;
-  justify-content: flex-start;
-  width: 100%;
-  margin: 1em;
-  gap: 0.5em;
-}
-
-.button {
-  background-color: #8edc90;
-  color: #000000;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  flex-direction: column;
 }
