@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const email = document.getElementById("mail");
   const emailError = document.querySelector("#mail + span.error");
-  email.addEventListener("input", (event) => {
+  email.addEventListener("input", () => {
     // Each time the user types something, we check if the
     // form fields are valid.
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   form.addEventListener("submit", (event) => {
     // if the email field is valid, we let the form submit
-    if (email.value.length === 0 || !email.validity.valid) {
+    if (!email.validity.valid) {
       // If it isn't, we display an appropriate error message
       showError();
       // Then we prevent the form from being sent by canceling the event
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (email.validity.valueMissing) {
       // If the field is empty,
       // display the following error message.
-      emailError.textContent = "You need to enter an e-mail address.";
+      emailError.textContent = "Falta un valor";
     } else if (email.validity.typeMismatch) {
       // If the field doesn't contain an email address,
       // display the following error message.

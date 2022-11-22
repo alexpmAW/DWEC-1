@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const isValid = email.value.length !== 0 || emailRegExp.test(email.value);
+    const isValid = emailRegExp.test(email.value);
     if (!isValid) {
       email.className = "invalid";
-      error.textContent = "I expect an e-mail!";
+      error.textContent = "No es correcto, tienes que meter un email valido";
       error.className = "error active";
     } else {
       email.className = "valid";
