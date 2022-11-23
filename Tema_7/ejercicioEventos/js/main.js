@@ -1,5 +1,9 @@
 "use strict";
 
+const ABECEDARIO = new Array('a', 'b', 'c', 'd', 'e', 'f', 'g',
+    'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+    't', 'u', 'v', 'w', 'x', 'y', 'z');
+
 
 export function getArrayData() {
     let arrayData = localStorage.getItem("arrayData");
@@ -11,7 +15,7 @@ export function getArrayData() {
 
 export function cifrar(textValue) {
 
-    desplazamiento = 5
+    const desplazamiento = 5
 
     let resultado = '';
     for (let i = 0; i < textValue.length; i++) {
@@ -24,4 +28,17 @@ export function cifrar(textValue) {
         resultado = resultado + ABECEDARIO[(indexNumber + desplazamiento) % 26];
     }
     return resultado;
+}
+
+export function storeData(nombre, apellido, nacimiento, genero, iban, pass) {
+    let arrayData = getArrayData();
+    arrayData.push({
+        nombre: nombre,
+        apellido: apellido,
+        nacimiento: nacimiento,
+        genero: genero,
+        iban: iban,
+        pass: pass
+    });
+    localStorage.setItem("arrayData", JSON.stringify(arrayData));
 }

@@ -1,54 +1,61 @@
 "use strict";
-import { getArrayData } from "./main.js";
+import { storeData } from "./main.js";
+import {
+  checkIfElementValueIsEmpty, checkPassword,
+  checkIsOlderThanEighteen, checkIfIsCorrectIban
+} from "./validator.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('idForm').addEventListener("submit", function (event) {
-    saveData(event);
+    checkAndSaveData(event);
   })
 });
 
-function saveData(event) {
+function checkAndSaveData(event) {
   let message = "";
-
   const nombre = document.getElementById('iNombre').value;
-  message += checkIfElementValueIsEmpty(nombre, 'Nombre');
-
   const apellido = document.getElementById('iApellido').value;
-  message += checkIfElementValueIsEmpty(apellido, 'Apellido');
-
-  const nacimiento = document.getElementById('iNacimiento').value;
-  message += checkIfElementValueIsEmpty(nacimiento, 'Nacimiento');
-
   const genero = document.querySelector('input[name="genero"]:checked').checked;
-  message += checkIfElementValueIsEmpty(genero, 'Genero');
-
+  const nacimiento = document.getElementById('iNacimiento').value;
+  const pass = document.getElementById('iPass').value;
   const iban = document.getElementById('ccc1').value
     + document.getElementById('ccc2').value
     + document.getElementById('ccc3').value
     + document.getElementById('ccc4').value;
-  message += checkIfElementValueIsEmpty(iban, 'Iban');
 
-  const pass = document.getElementById('iPass').value;
-  message += checkIfElementValueIsEmpty(pass, 'Password');
+  message = checkPersonalInformation(nombre, apellido, genero, nacimiento, message);
 
+  message = checkPrivateInformation(iban, pass, message);
+
+  setErrorMessage(event, message);
+  storeData(nombre, apellido, nacimiento, genero, iban, pass);
+}
+function setErrorMessage(event, message) {
+  const error = document.getElementById("error");
   if (message !== "") {
     event.preventDefault();
+    error.className = "error active";
+    error.innerHTML = message;
     return;
   }
-  let arrayData = getArrayData();
-  arrayData.push({
-    nombre: nombre,
-    apellido: apellido,
-    nacimiento: nacimiento,
-    genero: genero,
-    iban: iban,
-    pass: pass
 
-  })
-  localStorage.setItem(JSON.stringify(arrayData))
+  error.className = "error";
+  error.textContent = "";
+}
+function checkPrivateInformation(iban, pass, message) {
+  message += checkIfIsCorrectIban(iban);
+  message += checkPassword(pass);
+  return message;
 }
 
-function checkIfElementValueIsEmpty(element, nombreElemento) {
-  if (element === null || element.value === null || element.value === undefined)
-    return `The element ${nombreElemento} has no value! \n`;
+function checkPersonalInformation(nombre, apellido, nacimiento, genero, message) {
+
+  message += checkIfElementValueIsEmpty(nombre, 'Nombre');
+  message += checkIfElementValueIsEmpty(apellido, 'Apellido');
+  message += checkIfElementValueIsEmpty(nacimiento, 'Nacimiento');
+  message += checkIsOlderThanEighteen(nacimiento);
+  message += checkIfElementValueIsEmpty(genero, 'Genero');
+  return message;
 }
+
+

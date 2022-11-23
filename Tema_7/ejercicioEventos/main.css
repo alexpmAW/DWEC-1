@@ -20,8 +20,24 @@ fieldset {
   justify-content: flex-end;
 }
 
+.createButtonHome {
+  display: flex;
+  justify-content: center;
+  padding-top: 3em;
+}
+
 input {
   margin-bottom: 1em;
+}
+
+.createButton {
+  background-color: rgb(211, 153, 47);
+  border: none;
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0.5em;
+  cursor: pointer;
 }
 
 .styled-table {
