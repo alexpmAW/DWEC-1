@@ -29,6 +29,10 @@ function checkAndSaveData(event) {
 
   setErrorMessage(event, message);
 
+  if (message === "") {
+    storeData(nombre, apellido, nacimiento, genero, iban, pass);
+  }
+
 }
 function setErrorMessage(event, message) {
   const error = document.getElementById("error");
@@ -40,7 +44,7 @@ function setErrorMessage(event, message) {
 
   error.className = "error";
   error.textContent = "";
-  storeData(nombre, apellido, nacimiento, genero, iban, pass);
+
 }
 function checkPrivateInformation(iban, pass, message) {
   message += checkIfIsCorrectIban(iban);
