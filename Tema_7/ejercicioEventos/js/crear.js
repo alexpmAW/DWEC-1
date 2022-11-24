@@ -15,7 +15,7 @@ function checkAndSaveData(event) {
   let message = "";
   const nombre = document.getElementById('iNombre').value;
   const apellido = document.getElementById('iApellido').value;
-  const genero = document.querySelector('input[name="genero"]:checked').checked;
+  const genero = document.querySelector('input[name="genero"]:checked').value;
   const nacimiento = document.getElementById('iNacimiento').value;
   const pass = document.getElementById('iPass').value;
   const iban = document.getElementById('ccc1').value
@@ -40,6 +40,7 @@ function setErrorMessage(event, message) {
     event.preventDefault();
     error.className = "error active";
     error.innerHTML = message;
+    return;
   }
 
   error.className = "error";
