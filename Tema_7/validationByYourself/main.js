@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const emailRegExp =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  const isValid = emailRegExp.test(email.value);
   email.className = isValid ? "valid" : "invalid";
 
   // This defines what happens when the user types in the field
   email.addEventListener("input", () => {
-    const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+    const isValid = emailRegExp.test(email.value);
     if (isValid) {
       email.className = "valid";
       error.textContent = "";
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const isValid = email.value.length !== 0 || emailRegExp.test(email.value);
+    const isValid = emailRegExp.test(email.value);
     if (!isValid) {
       email.className = "invalid";
       error.textContent = "I expect an e-mail!";
