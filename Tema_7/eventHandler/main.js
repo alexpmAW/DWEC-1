@@ -1,12 +1,23 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
-  mostrarContenido();
+  modificarTextoButton();
+  hoverPonerColorAmarillo();
+
 });
 
-function mostrarContenido() {
+function modificarTextoButton() {
   const btn = document.querySelector("button");
-  changeContent = () => {
+  btn.addEventListener("click", function () {
     const h4 = document.querySelector(".heading4");
     h4.textContent = "Wow we did it! The content is changed";
-  };
-  btn.addEventListener("click", changeContent);
+  });
+}
+
+function hoverPonerColorAmarillo() {
+  const btn = document.querySelector("button");
+  btn.addEventListener("mouseover", function () {
+    const h4 = document.querySelector(".heading4");
+    h4.style.backgroundColor = 'Black';
+  });
 }

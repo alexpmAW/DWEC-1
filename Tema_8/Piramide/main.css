@@ -1,0 +1,84 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body,
+header,
+nav,
+footer,
+figure,
+figcaption,
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.square {
+    background-color: rgb(173, 25, 25);
+    margin-top: 0.5vh;
+    margin-left: 0.5vw;
+    animation: 1s fadeIn;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.square_hide {
+    background-color: rgb(173, 25, 25);
+    margin-top: 0.5vh;
+    margin-left: 0.5vw;
+    animation-name: hideButton;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hideButton {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        position: absolute;
+        opacity: 0.1;
+        bottom: 0vh;
+        visibility: hidden;
+    }
+}
+
+body {
+    height: 100vh;
+
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}

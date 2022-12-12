@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isValid = emailRegExp.test(email.value);
     if (!isValid) {
       email.className = "invalid";
-      error.textContent = "I expect an e-mail!";
+      error.textContent = "No es correcto, tienes que meter un email valido";
       error.className = "error active";
     } else {
       email.className = "valid";

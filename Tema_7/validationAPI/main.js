@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (email.validity.valueMissing) {
       // If the field is empty,
       // display the following error message.
-      emailError.textContent = "You need to enter an e-mail address.";
+      emailError.textContent = "Falta un valor";
     } else if (email.validity.typeMismatch) {
       // If the field doesn't contain an email address,
       // display the following error message.

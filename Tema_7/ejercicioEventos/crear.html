@@ -41,18 +41,18 @@
                 <legend>Información privada:</legend>
                 <label for="iBan">Iban</label>
                 <div class="inRow">
-                    <input type="text" id="ccc1" placeholder="0000" maxlength="4" size="4" minlength="4">
-                    <input type="text" id="ccc2" placeholder="0000" maxlength="4" size="4" minlength="4">
-                    <input type="text" id="ccc3" placeholder="00" maxlength="2" size="2" minlength="2">
-                    <input type="text" id="ccc4" placeholder="0000000000" maxlength="10" size="10" minlength="10">
+                    <input type="number" id="ccc1" placeholder="0000" max="9999" size="4" minlength="4">
+                    <input type="number" id="ccc2" placeholder="0000" max="9999" size="4" minlength="4">
+                    <input type="number" id="ccc3" placeholder="00" max="99" size="2" minlength="2">
+                    <input type="number" id="ccc4" placeholder="0000000000" max="9999999999" size="10" minlength="10">
                 </div>
                 <label for="iPass">Password</label>
                 <input type="Password" id="iPass" name="iPass">
                 <div class="submit">
-                    <input type="submit" value="Registrar">
+                    <input type="submit" class="createButton" value="Registrar">
                 </div>
-
             </fieldset>
+            <span class="error" id="error" aria-live="polite"></span>
         </form>
     </main>
     <footer>
