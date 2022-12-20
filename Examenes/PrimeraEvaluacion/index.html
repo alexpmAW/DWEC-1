@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="CSS/main.css">
+  <script src="JS/index.js"> </script>
+</head>
+
+<body>
+  <main>
+
+    <form action="./index.html" method="GET" id='idForm'>
+      <fieldset>
+        <legend>Datos personajes:</legend>
+        <label for="iNombre">Nombre</label>
+        <input type="text" id="iNombre" name="nombre">
+
+        <label for="iApellido">Raza</label>
+        <select>
+          <option>
+            Orco
+          </option>
+          <option>
+            Elfo
+          </option>
+          <option>
+            Humano
+          </option>
+          <option>
+            AlumnoDWEC
+          </option>
+        </select>
+
+        <div class="inRow">
+          <input type="radio" id="Good" name="alineamiento" value="Good" checked>
+          <label for="Good">Good</label>
+
+          <input type="radio" id="Neutral" name="alineamiento" value="Neutral">
+          <label for="Neutral">Neutral</label>
+
+          <input type="radio" id="Evil" name="alineamiento" value="Evil">
+          <label for="Evil">Evil</label>
+        </div>
+
+      </fieldset>
+      <fieldset>
+        <legend>Total de puntos <span id="totalPunto">0</span> </legend>
+        <div class="inRow">
+          <label>Fuerza</label>
+          <button id="menosFuerza">-</button>
+          <input name="fuerza" type="number" disabled>
+          <button id="masFuerza">+</button>
+        </div>
+        <div class="inRow">
+          <label>Vida</label>
+          <button id="menosVida">-</button>
+          <input name="vida" type="number" disabled>
+          <button id="masVida">+</button>
+        </div>
+        <div class="inRow">
+          <label>Suerte</label>
+          <button id="menosSuerte">-</button>
+          <input name="suerte" type="number" disabled>
+          <button id="masSuerte">+</button>
+        </div>
+      </fieldset>
+      <input type="submit" value="Registrar">
+      <span class="error" id="error" aria-live="polite"></span>
+    </form>
+  </main>
+  <footer>
+  </footer>
+  </main>
+</body>
+
+</html>
