@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+img {
+  min-width: 4em;
+  min-height: 4em;
+  max-width: 6em;
+  max-height: 6em;
+}

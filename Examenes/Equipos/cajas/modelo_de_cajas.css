@@ -1,0 +1,124 @@
+div {
+    /*padding: 20px; */
+    margin: 40px; 
+    border: 8px solid blue;   
+    width: 160px; 
+    height: 80px; 
+    background: lightblue;  
+}
+
+.content-box {
+  box-sizing: content-box;
+  /* Anchura total: 160px + (2 * 20px) + (2 * 8px) = 216px
+     Altura total: 80px + (2 * 20px) + (2 * 8px) = 136px
+     Anchura "Content": 160px
+     Altura "Content": 80px */
+}
+
+.border-box {
+  box-sizing: border-box;
+  /* Anchura total: 160px
+     Altura total: 80px
+     Anchura "Content": 160px - (2 * 20px) - (2 * 8px) = 104px
+     Altura "Content": 80px - (2 * 20px) - (2 * 8px) = 24px */
+}
+
+
+
+.tamano_caja_1 {
+    /* */
+    padding: 20px; 
+    margin: 40px; 
+    border: 8px solid blue;   
+    width: 160px; 
+    height: 80px; 
+    background: lightblue;
+
+}
+
+
+.tamano_caja_2 {
+    /* */
+    padding: 20px; 
+    margin: 40px; 
+    border: 8px solid blue;   
+    width: 160px; 
+    height: 80px; 
+    box-sizing: border-box;
+    background: lightblue;
+
+}
+
+span {
+  margin: 0px 10px;
+}
+
+.centrado {
+    margin: 0 auto;
+    width: 60%;
+    background-color: lightblue;
+}
+
+.div1 {
+	display: inline;
+	background: blue;
+}	
+
+.div2 {
+	display: inline;
+  height: auto;
+  border: none;
+	background: lightblue;
+	margin-left: -60px;         /* poner px */
+}
+
+.radios { 
+	width: 250px; 
+	height: 250px; 
+/* border: 0;
+  margin: 0;
+  padding: 0;*/
+  box-sizing: border-box; 
+	background: lightblue;
+  
+  /* border-radius: 125px;           /* ... y hacer círculo */
+  /* border-radius: 125px;       /* circulo */
+  /* border-radius: 125px 125px; /* circulo */
+  border-radius: 50%;         /* circulo */
+
+  /* Radio horizontal / radio vertical */
+  /* border-radius: 15px 65px 15px 65px / 15px 25px 15px 25px; /*   */
+
+  border-style: solid dotted dashed double; 
+}
+
+
+.multiples { 
+    width: 100px; 
+	  height: 100px;
+    margin: 20px;
+	  background: blanchedalmond;
+  
+  	border: 3px solid burlywood;          /*    */
+
+	  outline: 3px solid yellow;           /* Outline */
+    
+    /* box-shadow: 5px 10px #888888;;   /* Box shadow */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;   /*   */
+  }
+
+.overflow { 
+	  width: 100px; 
+	  height: 100px;
+  	margin: 20px;
+	  background: lightblue;
+	  border: solid;
+  
+  overflow: auto;           /* scroll, auto...    */
+  /* overflow-wrap: break-word;    /*     */
+
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+  

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Modelo de cajas</title>
+    <link rel="stylesheet" type="text/css" href="modelo_de_cajas.css">
+</head>
+
+    <body>
+        <h3>Modelo de cajas</h3>
+        <h4>Contornos (Edges)</h4>
+            <div>Cajas</div>
+
+        <!--  -->  
+        <h4>Tamaño de la caja</h4>
+        Como "height" y "width" no siempre representa el tamaño<br>
+        real de la caja necesitamos indicar como se calcularán.
+
+            <div class="content-box">Caja definida "Content box"</div>
+            <div class="border-box">Caja definida "Border box"</div>
+
+
+        <h4>Márgenes</h4>
+
+            En vertical, se superponen (cajas superiores).<br>
+            <span>En horizontal</span><span>se suman.</span>
+
+            <br>
+            <h4>Central horizontalmente</h4>
+            <div class="centrado">Texto centrado</div>
+
+            
+            <h4>Márgenes negativos</h4>
+            <br>
+            <div class="div1">Inferior</div>
+            <div class="div2">Superior</div>
+
+            <br><br><br><br>
+
+            <h4>Bordes</h4>
+            Border-radius y border-style
+            <div class="radios"><br><br>&nbsp;&nbsp;&emsp;Cuadrado?</div>
+               
+            <h4>Múltiples bordes y Overflow</h4>
+            Múltiples bordes: con outline podemos definir varios bordes para un elemento.<br>
+            Outline se coloca fuera del borde y no ocupa espacio en el modelo de caja. <br>
+            No pueden tener esquinas redondeadas
+            <div class="multiples">Caja de texto.</div><br>
+
+            Desbordamiento - overflow
+            <div class="overflow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed <span>rutrumgravidadolor</span>, 
+                et pharetra risus vestibulum ultricies.</div>
+
+    </body>
+
+</html>
