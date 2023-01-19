@@ -10,21 +10,26 @@ fieldset {
   padding: 1em;
 }
 
+
 .inRow {
   display: flex;
   flex-direction: row;
 }
 
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 input {
   margin-bottom: 1em;
 }
 
-
 .error {
   width: 100%;
   padding: 0;
-
   font-size: 80%;
   color: white;
   background-color: #900;
@@ -34,4 +39,12 @@ input {
 
 .error.active {
   padding: 0.3em;
+}
+
+.hide{
+  display: none;
+}
+
+img{
+  max-width: 100%;
 }
