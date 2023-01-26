@@ -19,8 +19,13 @@
 
 <body>
   <main>
+<<<<<<< HEAD
     <form action="./index.html" id="form" method="GET" class="row g-3 needs-validation d-flex justify-content-center" novalidate
       autocomplete="on">
+=======
+    <form action="./index.html" method="GET" id="form" class="row g-3 needs-validation d-flex justify-content-center"
+      novalidate autocomplete="on">
+>>>>>>> ec379e48be24a930c4d37399ad21cd8ae8df89b5
       <fieldset>
         <div class="col-md-4 mx-md-auto m-2">
           <legend>Pet data</legend>
@@ -78,6 +83,24 @@
       </div>
 
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Error Peticion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Ha habido un error al enviar la peticin
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
