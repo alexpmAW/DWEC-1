@@ -1,9 +1,24 @@
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#create").addEventListener("click", function () {
+        createCookie("defaultCookie", document.querySelector("#createInput").value);
+    })
+    document.querySelector("#view").addEventListener("click", function () {
+        document.querySelector("#viewInput").value = readCookie("defaultCookie");
+    })
+    document.querySelector("#modify").addEventListener("click", function () {
+        updateCookie("defaultCookie", document.querySelector("#modifyInput").value);
+    })
+    document.querySelector("#delete").addEventListener("click", function () {
+        deleteCookie("defaultCookie");
+    })
+});
+
 // Function to create a cookie
 function createCookie(name, value, days) {
     var expires;
     if (days) {
-        var date = new Date();
+        const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toGMTString();
     }
@@ -15,10 +30,10 @@ function createCookie(name, value, days) {
 
 // Function to read a cookie
 function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
+    let nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
         while (c.charAt(0) === ' ') c = c.substring(1, c.length);
         if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
