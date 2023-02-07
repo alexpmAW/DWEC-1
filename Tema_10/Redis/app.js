@@ -75,7 +75,7 @@ app.delete('/books/:id', (req, res) => {
     res.send('Book is deleted');
 });
 
-app.put('/book/:id', (req, res) => {
+app.put('/books/:id', (req, res) => {
     // Reading id from the URL
     const id = parseInt(req.params.id);
     const newBook = req.body;
