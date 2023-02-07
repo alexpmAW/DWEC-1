@@ -4,11 +4,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-const json = JSON.parse(
-    await readFile(
-        new URL('./file.json', import.meta.url)
-    )
-);
 
 
 const client = createClient({
@@ -41,9 +36,10 @@ app.get('/books', async (req, res) => {
     res.json(await getBooks());
 });
 
-app.get('/books/:id', (req, res) => {
+app.get('/books/:id', async (req, res) => {
     const id = parseInt(req.params.id);
 
+    const books = await getBooks();
     // Searching books for the id
     for (let book of books) {
         if (book.id === id) {
@@ -98,8 +94,8 @@ app.listen(port, () => console.log(`Hello world app listening on port ${port}!`)
 async function getBooks() {
     let value = await client.get('books');
     if (value === undefined || value === null) {
-        value = [];
+        return [];
     }
-    return value;
+    return JSON.parse(value);
 }
 
