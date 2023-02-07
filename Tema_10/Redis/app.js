@@ -23,7 +23,6 @@ const value = await client.get('HOLA');
 await client.disconnect();
 */
 
-
 const app = express()
 const port = 3000
 
@@ -35,13 +34,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/book', (req, res) => {
+app.post('/books', (req, res) => {
     const book = req.body;
-
-    // Output the book to the console for debugging
-    console.log(book);
+    book.id = Math.floor(Math.random() * 100000);
     books.push(book);
-
     res.send('Book is added to the database');
 });
 
@@ -49,13 +45,12 @@ app.get('/books', (req, res) => {
     res.json(books);
 });
 
-app.get('/book/:isbn', (req, res) => {
-    // Reading isbn from the URL
-    const isbn = req.params.isbn;
+app.get('/books/:id', (req, res) => {
+    const id = parseInt(req.params.id);
 
-    // Searching books for the isbn
+    // Searching books for the id
     for (let book of books) {
-        if (book.isbn === isbn) {
+        if (book.id === id) {
             res.json(book);
             return;
         }
@@ -65,13 +60,13 @@ app.get('/book/:isbn', (req, res) => {
     res.status(404).send('Book not found');
 });
 
-app.delete('/book/:isbn', (req, res) => {
-    // Reading isbn from the URL
-    const isbn = req.params.isbn;
+app.delete('/books/:id', (req, res) => {
+    // Reading id from the URL
+    const id = parseInt(req.params.id);
 
     // Remove item from the books array
     books = books.filter(i => {
-        if (i.isbn !== isbn) {
+        if (i.id !== id) {
             return true;
         }
         return false;
@@ -80,15 +75,15 @@ app.delete('/book/:isbn', (req, res) => {
     res.send('Book is deleted');
 });
 
-app.put('/book/:isbn', (req, res) => {
-    // Reading isbn from the URL
-    const isbn = req.params.isbn;
+app.put('/book/:id', (req, res) => {
+    // Reading id from the URL
+    const id = parseInt(req.params.id);
     const newBook = req.body;
 
     // Remove item from the books array
     for (let i = 0; i < books.length; i++) {
         let book = books[i]
-        if (book.isbn === isbn) {
+        if (book.id === id) {
             books[i] = newBook;
         }
     }
