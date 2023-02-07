@@ -4,14 +4,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-
-
 const client = createClient({
     url: 'redis://default:123pass@localhost:5000'
 });
 
 await client.connect();
-
 
 const app = express();
 const port = 3000;
@@ -47,7 +44,6 @@ app.get('/books/:id', async (req, res) => {
             return;
         }
     }
-
     // Sending 404 when not found something is a good practice
     res.status(404).send('Book not found');
 });
@@ -63,7 +59,6 @@ app.delete('/books/:id', (req, res) => {
         }
         return false;
     });
-
     res.send('Book is deleted');
 });
 
@@ -76,7 +71,6 @@ app.put('/books/:id', (req, res) => {
         res.send('El id tiene que ser el mismo');
         return;
     }
-
     // Remove item from the books array
     for (let i = 0; i < books.length; i++) {
         let book = books[i]
