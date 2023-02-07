@@ -10,23 +10,17 @@ const json = JSON.parse(
     )
 );
 
-/*
+
 const client = createClient({
     url: 'redis://default:123pass@localhost:5000'
 });
 
-client.on('error', err => console.log('Redis Client Error', err));
 await client.connect();
-await client.set('nuevaClave', JSON.stringify(json));
-const value = await client.get('HOLA');
 
-await client.disconnect();
-*/
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
-let books = [];
 
 app.use(cors());
 
@@ -34,15 +28,17 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/books', (req, res) => {
+app.post('/books', async (req, res) => {
     const book = req.body;
     book.id = Math.floor(Math.random() * 100000);
+    const books = await getBooks();
     books.push(book);
+    await client.set('books', JSON.stringify(books));
     res.send('Book is added to the database');
 });
 
-app.get('/books', (req, res) => {
-    res.json(books);
+app.get('/books', async (req, res) => {
+    res.json(await getBooks());
 });
 
 app.get('/books/:id', (req, res) => {
@@ -80,10 +76,16 @@ app.put('/books/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const newBook = req.body;
 
+    if (newBook.id !== id) {
+        res.send('El id tiene que ser el mismo');
+        return;
+    }
+
     // Remove item from the books array
     for (let i = 0; i < books.length; i++) {
         let book = books[i]
         if (book.id === id) {
+
             books[i] = newBook;
         }
     }
@@ -92,3 +94,12 @@ app.put('/books/:id', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
+
+async function getBooks() {
+    let value = await client.get('books');
+    if (value === undefined || value === null) {
+        value = [];
+    }
+    return value;
+}
+
