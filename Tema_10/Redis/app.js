@@ -1,5 +1,4 @@
 import { createClient } from 'redis';
-import { readFile } from 'fs/promises';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -37,7 +36,7 @@ app.get('/books/:id', async (req, res) => {
     const id = parseInt(req.params.id);
 
     const books = await getBooks();
-    // Searching books for the id
+    // Sear ching books for the id
     for (let book of books) {
         if (book.id === id) {
             res.json(book);
