@@ -9,7 +9,8 @@ await client.connect();
 
 
 export async function getCars() {
-  return JSON.parse(await client.get("Cars") ?? []);
+  const data = await client.get("Cars");
+  return JSON.parse(data ?? '[]');
 }
 
 export async function getCarByID(id) {
@@ -40,6 +41,7 @@ export async function insertCar(car) {
   car.id = uuidv4();
   cars.push(car);
   await client.set("Cars", JSON.stringify(cars));
+  return car;
 }
 
 export async function deleteCar(id) {
@@ -47,16 +49,23 @@ export async function deleteCar(id) {
   const newCars = cars.filter(function (value) {
     return value.id !== id
   });
-  await client.set("Cars", JSON.stringify(newCars));
+
+  if (cars.length != newCars.length) {
+    await client.set("Cars", JSON.stringify(newCars));
+    return true;
+  }
+  return false;
 }
 
 export async function modifyCar(car) {
   const cars = await getCars();
   for (let i = 0; i < cars.length; i++) {
-    if (cars[i].id === id) {
+    if (cars[i].id === car.id) {
       cars[i] = car;
+      await client.set("Cars", JSON.stringify(cars));
+      return true;
     }
   }
-  await client.set("Cars", JSON.stringify(newCars));
+  return false;
 }
 
