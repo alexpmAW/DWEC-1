@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/cars', async (req, res) => {
-  res.status(200).json(getCars());
+  res.status(200).json(await getCars());
 });
 
 app.get('/cars/:id', async (req, res) => {
@@ -54,7 +54,7 @@ app.delete('/cars/:id', async (req, res) => {
     return;
   }
 
-  res.status(400).send('Failure while deleting the car');
+  res.status(404).send('Car not found');
 });
 
 app.put('/cars/:id', async (req, res) => {
@@ -78,7 +78,7 @@ app.put('/cars/:id', async (req, res) => {
     return;
   }
 
-  res.send('Failure while modifying the car');
+  res.status(404).send('Car not found');
 });
 
 app.listen(port, () => console.log(`API Rest starts at ${port}!`));
