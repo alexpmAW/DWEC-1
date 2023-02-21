@@ -1,14 +1,15 @@
-const express = require('express')
-const authRoutes = require('./routes/auth.js')
-const mongoose = require('mongoose')
-const dashboardRoutes = require('./routes/dashboard')
-const verifyToken = require('./routes/validate-token')
-const cors = require('cors')
-require('dotenv').config()
+import express, { json, urlencoded } from 'express'
+import authRoutes from './routes/auth.js'
+import { connect, mongoose } from 'mongoose'
+import dashboardRoutes from './routes/dashboard.js'
+import verifyToken from './routes/validate-token.js'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@free-cluster.saw1r.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
-mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.set('strictQuery', true);
+dotenv.config();
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@localhost/${process.env.DBNAME}?retryWrites=true&w=majority`
+connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Conectado a la base de datos')
   })
@@ -25,8 +26,8 @@ const app = express()
 
 app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
 app.use('/api/user', authRoutes)
 app.use('/api/dashboard', verifyToken, dashboardRoutes)
