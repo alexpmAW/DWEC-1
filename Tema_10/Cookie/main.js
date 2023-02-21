@@ -1,5 +1,6 @@
 
 import { createCookie, readCookie, updateCookie, deleteCookie } from "./cookie.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#create").addEventListener("click", function () {
         createCookie("defaultCookie", document.querySelector("#createInput").value);
