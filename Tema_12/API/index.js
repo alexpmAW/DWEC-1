@@ -4,17 +4,21 @@ import { connect, mongoose } from 'mongoose'
 import dashboardRoutes from './routes/dashboard.js'
 import verifyToken from './routes/validate-token.js'
 import cors from 'cors'
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 mongoose.set('strictQuery', true);
-dotenv.config();
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@localhost/${process.env.DBNAME}?retryWrites=true&w=majority`
+dotenv.config({ path: `${__dirname}/.env` });
+const uri = "mongodb+srv://admin:password@localhost/books?authMechanism=DEFAULT";
+//const uri = `mongodb://${process.env.USER}:${process.env.PASSWORD}@localhost:${process.env.DBPORT}/${process.env.DBNAME}?authMechanism=DEFAULT`;
 connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Conectado a la base de datos')
   })
   .catch((e) => {
-    console.log('Database error', e)
+      console.log('Database error', e)
   })
 
 var corsOptions = {
