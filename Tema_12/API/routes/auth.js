@@ -1,9 +1,11 @@
-const router = require('express').Router()
-const User = require('../models/user')
-const Joi = require('@hapi/joi')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+"use strict"
+import express from 'express';
+import User from '../models/user.js'
+import Joi from '@hapi/joi'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
+const router = express.Router();
 const schemaRegister = Joi.object({
     name: Joi.string().min(6).max(255).required(),
     email: Joi.string().min(6).max(255).required().email(),
@@ -20,22 +22,22 @@ const schemaLogin = Joi.object({
 router.post('/login', async (req, res) => {
     // Validaciones de login
     const { error } = schemaLogin.validate(req.body)
-    if(error) return res.status(400).json({error: error.details[0].message})
-    
+    if (error) return res.status(400).json({ error: error.details[0].message })
+
     // Validaciond e existencia
-    const user = await User.findOne({email: req.body.email})
-    if(!user) return res.status(400).json({error: 'Usuario no encontrado'})
+    const user = await User.findOne({ email: req.body.email })
+    if (!user) return res.status(400).json({ error: 'Usuario no encontrado' })
 
     // Validacion de password en la base de datos
     const validPassword = await bcrypt.compare(req.body.password, user.password)
-    if(!validPassword) return res.status(400).json({error: 'Constraseña invalida'})
+    if (!validPassword) return res.status(400).json({ error: 'Constraseña invalida' })
 
     // Creando token
     const token = jwt.sign({
         name: user.name,
         id: user._id
     }, process.env.TOKEN_SECRET)
-    
+
     // Colocando el token en el header y el cuerpo de la respuesta
     res.header('auth-token', token).json({
         error: null,
@@ -59,7 +61,7 @@ router.post('/register', async (req, res) => {
     const isEmailExist = await User.findOne({ email: req.body.email });
     if (isEmailExist) {
         return res.status(400).json(
-            {error: 'Email ya registrado'}
+            { error: 'Email ya registrado' }
         )
     }
 
@@ -78,8 +80,8 @@ router.post('/register', async (req, res) => {
             data: savedUser
         })
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({ error })
     }
 })
 
-module.exports = router
+export default router
